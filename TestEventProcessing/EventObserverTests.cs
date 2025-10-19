@@ -8,14 +8,13 @@ namespace TestEventProcessing;
 
 public class EventObserverTests
 {
-    private readonly Mock<ILogger<EventObserver>> _mockLogger;
     private readonly EventObserver _eventObserver;
 
     public EventObserverTests()
     {
         var mockDataStorage = new Mock<IDataStorage>();
-        _mockLogger = new Mock<ILogger<EventObserver>>();
-        _eventObserver = new EventObserver(mockDataStorage.Object, _mockLogger.Object);
+        var mockLogger = new Mock<ILogger<EventObserver>>();
+        _eventObserver = new EventObserver(mockDataStorage.Object, mockLogger.Object);
     }
 
     [Fact]
